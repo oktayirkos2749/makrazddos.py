@@ -1,12 +1,10 @@
+#!/usr/bin/python
+ 
 import argparse
 import socket
 import random
 import time
-banner="""
-Ne kadar bilirsen bil; söylediklerin karşındakinin anladığı kadardır.
-Mevlânâ Celaleddin-i Rumi
-
-"""
+ 
 parser = argparse.ArgumentParser(description="Dos By ./D3V1L-AL")
 parser.add_argument('-t','--target',help='Enter the target ip',required=True)
 parser.add_argument('-p','--port',help='Enter the target port',required=True)
